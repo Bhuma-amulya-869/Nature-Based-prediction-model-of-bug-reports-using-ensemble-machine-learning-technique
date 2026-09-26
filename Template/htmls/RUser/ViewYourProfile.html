@@ -1,0 +1,127 @@
+{% extends 'RUser/design.html' %}
+{% load static %}
+
+{% block userblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Righteous" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(120deg, #963e76, #96a53f);
+        }
+
+        .profile-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px;
+        }
+
+        .profile-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            padding: 30px;
+        }
+
+        .profile-title {
+            font-family: 'Fredoka One', cursive;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1e293b;
+        }
+
+        .info-row {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 12px 0;
+        }
+
+        .info-label {
+            width: 35%;
+            font-weight: bold;
+            color: #ffffff;
+            background: #332294;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .info-value {
+            width: 65%;
+            padding: 8px 15px;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        @media (max-width: 768px) {
+            .info-row {
+                flex-direction: column;
+            }
+
+            .info-label, .info-value {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <h3 class="profile-title">Your Profile</h3>
+
+        <div class="info-row">
+            <div class="info-label">Username</div>
+            <div class="info-value">{{ object.username }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Email</div>
+            <div class="info-value">{{ object.email }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Mobile Number</div>
+            <div class="info-value">{{ object.phoneno }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Gender</div>
+            <div class="info-value">{{ object.gender }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Address</div>
+            <div class="info-value">{{ object.address }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Country</div>
+            <div class="info-value">{{ object.country }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">State</div>
+            <div class="info-value">{{ object.state }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">City</div>
+            <div class="info-value">{{ object.city }}</div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+{% endblock %}

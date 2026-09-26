@@ -1,0 +1,129 @@
+{% extends 'SProvider/design1.html' %}
+{% block researchblock %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Righteous" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(120deg, #7f1d1d, #991b1b);
+        }
+
+        .page-container {
+            padding: 40px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+        }
+
+        .page-title {
+            font-family: 'Fredoka One', cursive;
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Righteous', cursive;
+            font-size: 14px;
+        }
+
+        thead {
+            background: #dc2626;
+            color: #ffffff;
+        }
+
+        thead th {
+            padding: 12px;
+            text-align: center;
+        }
+
+        tbody td {
+            padding: 10px;
+            text-align: center;
+            color: #1f2937;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tbody tr:hover {
+            background: #fef2f2;
+        }
+
+        .no-data {
+            text-align: center;
+            font-weight: bold;
+            color: #dc2626;
+            padding: 20px;
+        }
+
+        @media (max-width: 900px) {
+            table {
+                font-size: 12px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="page-container">
+    <div class="card">
+
+        <h3 class="page-title">View All Remote Users</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Mobile No</th>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if objects %}
+                    {% for o in objects %}
+                    <tr>
+                        <td>{{ o.username }}</td>
+                        <td>{{ o.email }}</td>
+                        <td>{{ o.gender }}</td>
+                        <td>{{ o.address }}</td>
+                        <td>{{ o.phoneno }}</td>
+                        <td>{{ o.country }}</td>
+                        <td>{{ o.state }}</td>
+                        <td>{{ o.city }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="8" class="no-data">
+                            No Remote Users Found
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

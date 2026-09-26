@@ -1,0 +1,131 @@
+{% extends 'RUser/design.html' %}
+{% block userblock %}
+
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+
+<style>
+    body {
+        background-color: #4679e7;
+    }
+    .container-fluid {
+        padding: 50px;
+    }
+    .container {
+        background-color: white;
+        padding: 50px;
+    }
+    #title {
+        font-family: 'Fredoka One', cursive;
+    }
+    .text-uppercase {
+        font-family: 'Righteous', cursive;
+    }
+    .style1 {
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+    .style6 {
+        font-size: 24px;
+        color: #171715;
+        font-weight: bold;
+    }
+    .style8 {
+        color: #f0f0e9;
+        font-weight: bold;
+    }
+    .style10 {
+        font-size: 16px;
+        color: #241b4c;
+        font-weight: bold;
+    }
+    table input, table textarea {
+        width: 95%;
+        padding: 6px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="container">
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <p class="text-uppercase text-center style10">
+                PREDICTION <span class="style10">OF BUG REPORT TYPE</span>
+            </p>
+            <hr>
+
+            <table width="100%" align="center">
+
+                <tr>
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter bug_id</td>
+                    <td><input type="text" name="bug_id" required></td>
+
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter creation_date</td>
+                    <td>
+                        <!-- CORRECT DATE INPUT -->
+                        <input type="date" name="creation_date" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter component_name</td>
+                    <td><input type="text" name="component_name" required></td>
+
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter product_name</td>
+                    <td><input type="text" name="product_name" required></td>
+                </tr>
+
+                <tr>
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter short_description</td>
+                    <td><textarea name="short_description" required></textarea></td>
+
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter long_description</td>
+                    <td><textarea name="long_description" required></textarea></td>
+                </tr>
+
+                <tr>
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter reporter_name</td>
+                    <td><input type="text" name="reporter_name" required></td>
+
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter resolution_category</td>
+                    <td><input type="text" name="resolution_category" required></td>
+                </tr>
+
+                <tr>
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter status_category</td>
+                    <td><input type="text" name="status_category" required></td>
+
+                    <td bgcolor="#4679e7" align="center" class="style8">Enter bug_fix_time (days)</td>
+                    <td><input type="number" name="bug_fix_time" min="0" required></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4" align="center">
+                        <input type="submit" name="submit" value="Predict" class="style1" style="background:rgb(211, 50, 163);padding:10px 30px;">
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+
+        <hr>
+
+        <!-- RESULT SECTION -->
+        <table width="60%" align="center">
+            <tr>
+                <td bgcolor="#FF0000" align="center">
+                    <span class="style6">PREDICTION OF BUG REPORT TYPE</span>
+                </td>
+                <td bgcolor="#FFFFFF" align="center" style="color:rgb(60, 91, 158);font-size:20px;font-family:fantasy;">
+                    {{ objs }}
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}
